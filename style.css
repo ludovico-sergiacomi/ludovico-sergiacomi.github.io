@@ -1,0 +1,53 @@
+body {
+    font-family: Poppins;
+    background-color: rgb(136, 174, 250);
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+        
+}
+
+
+
+#quote {
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10%;
+    font-size: 14pt;
+    color: white;
+    margin-top: 5%;
+}
+
+#cloud {
+    bottom: 250px;
+    margin-bottom: 0;
+    position: absolute;
+    left: 40px;
+    z-index: -2;
+}
+
+#main {
+    margin-top: 100px;
+    background-color: white;
+    border-radius: 40px;
+    height: 400px;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    column-gap: 10px;
+}
+
+.square {
+    background-color: rgb(136, 174, 250);
+    width: 250px;
+    height: 250px;
+    border-radius: 20%;
+    border: 5px solid rgb(136, 174, 250);
+    color: white;
+    padding: 10%;
+}
+
+.square:hover {
+    border: 5px solid white;
+}
+
