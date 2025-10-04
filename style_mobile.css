@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 24pt;
+    overflow-x: hidden;
 
 }
 
@@ -11,7 +12,19 @@ body {
     background-color: #020321;
     font-family: aleo;
     /* font-size: 48px; */
+    width: 100vw;
+    height: 100vh;
     
+}
+
+#wrapper {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /* margin: inherit; */
+    /* background-color: inherit; */
+    font: inherit;
+    /* width: inherit; */
+    z-index: -1;
 }
 
 h1 {
@@ -232,7 +245,7 @@ button {
 .container {
     /* width: 100vw; */
     height: 100vh;
-    width: 150vw;
+    width: 150%;
     margin: 0;
     z-index: -2;
     /* background: linear-gradient(-10deg, darkslategrey, teal 40%,  white); */
@@ -452,12 +465,13 @@ button {
 
 
 #sandy {
-    background-color: inherit;
-    width: 100vw;
-    height: 100vh;
+    background-color: #020321;
+    /* background-color: white; */
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 70%;
-    z-index: 2;
+    z-index: 3;
 
 }
 
