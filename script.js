@@ -114,8 +114,8 @@ function aStarIsBorn(){
     let star = document.createElement("span");
     star.classList.add("star");
     star.innerHTML = '*';
-    star.style.left = String(Math.round(Math.random()*100)) + "%";
-    star.style.top = String(Math.round(Math.random()*100)) + "%";
+    star.style.left = String(Math.round(Math.random()*95)) + "%";
+    star.style.top = String(Math.round(Math.random()*95)) + "%";
     document.body.appendChild(star)
     star.addEventListener("animationend", ()=>{
         // console.log("animation end");
