@@ -44,7 +44,9 @@ function modeHandler(e){
 
 }
 }
-catch{}
+catch(err){ 
+    console.log(err)
+}
 
 
 const WIDTH = 150;
