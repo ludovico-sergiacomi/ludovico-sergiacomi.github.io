@@ -1,9 +1,3 @@
-if(window.screen.width < 500){
-    document.body.removeChild(document.querySelector(".container"));
-    document.body.style.height = "100vh";
-}
-
-
 var mouse = []
 const body = document.body
 document.body.onmousemove = ()=>{mouseHandler(event)}
@@ -28,7 +22,7 @@ function mouseHandler(event){
     
 }
 
-
+try{
 const modeSwitch = document.querySelector('.modeBar')
 const modeButton = document.querySelector('.modeButton')
 modeSwitch.addEventListener('click', modeHandler)
@@ -49,6 +43,8 @@ function modeHandler(e){
     }
 
 }
+}
+catch{}
 
 
 const WIDTH = 150;
