@@ -245,16 +245,18 @@ button {
 .container {
     /* width: 100vw; */
     height: 100vh;
-    width: 150%;
+    width: 120%;
     margin: 0;
     z-index: -2;
+    overflow-x: hidden;
+    overflow-y: hidden;
     /* background: linear-gradient(-10deg, darkslategrey, teal 40%,  white); */
     background: radial-gradient(circle 100vh at center 100%, #4d136a,  #020321 90%);
     /* background: linear-gradient(20deg, rgb(77, 19, 106),  rgb(2, 3, 33) 90%); */
     background-repeat: no-repeat;
     background-attachment: fixed;
     position: absolute;
-    bottom: 20%;
+    bottom: 10%;
     left: -20%;
     /* overflow-x: scroll; */
 }
@@ -470,7 +472,7 @@ button {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 70%;
+    top: 75%;
     z-index: 3;
 
 }
