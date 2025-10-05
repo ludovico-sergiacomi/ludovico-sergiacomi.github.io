@@ -1,1 +1,1 @@
-An attempt of providing a nice (hopefully) web portfolio. 
+An attempt to provide a nice (hopefully) web portfolio. 
