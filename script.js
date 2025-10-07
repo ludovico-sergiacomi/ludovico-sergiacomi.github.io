@@ -220,24 +220,33 @@ var titles = [
 ]
 
 
+const spans = document.querySelectorAll(".info-span");
 var j=0;
 function triggerAnimation(){
     setter.style.transform = "rotate(" + (j*90).toString() + "deg)"
     
-    let spans = document.querySelectorAll(".info-span");
     for(let i=1; i< spans.length; i++){
         let el = spans[i];
-        el.innerHTML = projects[(j*3+i-1)%projects.length]
         el.style.animation = 'none';
         el.offsetHeight; /* trigger reflow */
         el.style.animation = null;
         
     }
     title.innerHTML = titles[j];
-
+    setTimeout(changeInfo, 500);
     j++;
     j = j%4;
     
+}
+
+
+
+function changeInfo(){
+    for(let i=1; i< spans.length; i++){
+        let el = spans[i];
+        el.innerHTML = projects[((4+j-1)%4)*3 + i - 1]
+        
+    }
 }
 
 const title = document.querySelector(".middle-btn");

@@ -590,12 +590,14 @@ button {
     text-align: center;
     position: absolute;
     top: 50%;
-    /* left: -50%; */
+    /* left: 50%; */
     transform: translate(-50%, -50%);
+    /* transform: translateY(-50%); */
     /* line-height: 150%; */
     animation-name: text-slide;
-    animation-duration: 1.5s;
-    animation-timing-function:cubic-bezier(0.23, 1, 0.320, 1);
+    animation-duration: 1s;
+    animation-timing-function:cubic-bezier(0.215, 0.610, 0.355, 1);
+    /* animation-timing-function: ease-in-out; */
     animation-fill-mode: forwards;
     padding: 5%;
     /* background-color: black; */
@@ -603,11 +605,26 @@ button {
 
 @keyframes text-slide {
     0% {
-        left: -50%
+        left: 50%;
     }
+
+    25% {
+        left: 150%;
+    }
+    
+    30% {
+        opacity: 0;
+    }
+
+    50% {
+        /* opacity:; */
+        left: -100%;
+    }
+    
 
     100% {
         left: 50%;
+        opacity: 1;
     }
 }
 
@@ -626,7 +643,7 @@ button {
 
 #dot1 {
     background-color: white;
-    top: 0;
+    top: 15%;
     left: 50%
 }
 
