@@ -28,24 +28,7 @@ const modeButton = document.querySelector('.modeButton')
 modeSwitch.addEventListener('click', modeHandler)
 var mode = 'moon'
 
-var i=1;
-function triggerAnimation(){
-    setter.style.transform = "rotate(" + ((i*90)% 360).toString() + "deg)"
-    
-    let spans = document.querySelectorAll(".info-span");
-    for(let i=1; i< spans.length; i++){
-        let el = spans[i];
-        el.style.animation = 'none';
-        el.offsetHeight; /* trigger reflow */
-        el.style.animation = null; 
-    }
-    i++;
-    
-}
 
-const setter = document.querySelector("#setter");
-// const canvas = document.querySelector(".overlay-canvas");
-setter.addEventListener("click", ()=>{triggerAnimation()})
 
 function modeHandler(e){
     if(mode == 'moon'){
@@ -211,3 +194,95 @@ setInterval( aStarIsBorn, 1000);
 //     renderer2.render(scene2, camera2);
 // }
 // render2();
+
+
+var projects = [
+    'ARBITRAGE <br class="br-high"> bot searching for opportunities',
+    'WEB DEVELOPMENT  <br class="br-high"> this very site!',
+    'BOUNCING BALLS  <br class="br-high"> collision simulation in JavaScript',
+
+
+    'PRIME NUMBERS  <br class="br-high"> Python script finding primes',
+    'WORDS  <br class="br-high"> generate unexisting but perfectly plausible words',
+    'ARDUINO  <br class="br-high"> mid-air drawing with a gyroscope',
+
+    'GRAPHICS  <br class="br-high"> some attempts in graphic design',
+    'COMING SOON <br class="br-high"> (I hope)',
+    'BLOCKCHAIN <br class="br-high"> <i>Solidity</i> smart contracts',
+    
+    '3D MODELING  <br class="br-high"> Blender objects and scenes',
+    'PHOTOGRAPHY  <br class="br-high"> some of the photo I like the most',
+    'OIL PASTELS  <br class="br-high"> trying to draw something good...',
+]
+
+var titles = [
+    "JavaScript", "Python", "Miscellanea", "Art"
+]
+
+
+var j=0;
+function triggerAnimation(){
+    setter.style.transform = "rotate(" + (j*90).toString() + "deg)"
+    
+    let spans = document.querySelectorAll(".info-span");
+    for(let i=1; i< spans.length; i++){
+        let el = spans[i];
+        el.innerHTML = projects[(j*3+i-1)%projects.length]
+        el.style.animation = 'none';
+        el.offsetHeight; /* trigger reflow */
+        el.style.animation = null;
+        
+    }
+    title.innerHTML = titles[j];
+
+    j++;
+    j = j%4;
+    
+}
+
+const title = document.querySelector(".middle-btn");
+const setter = document.querySelector("#setter");
+// const canvas = document.querySelector(".overlay-canvas");
+setter.addEventListener("click", ()=>{triggerAnimation()})
+triggerAnimation();
+
+const projectCircles = document.querySelectorAll(".project-circle")
+for(let i =0; i<projectCircles.length; i++){
+    projectCircles[i].addEventListener("click", ()=>{focusHandler(i)})
+}
+
+function focusHandler(self){
+    if(self==0){
+        notebook.innerHTML = ""
+    }
+    for(let i=1; i<projectCircles.length; i++){
+        if(i == self){
+            projectCircles[i].classList.add("project-circle-active");
+            projectDescription(i);
+
+        }
+        else{
+            projectCircles[i].classList.remove("project-circle-active");
+        }
+    }
+}
+
+const notebook = document.querySelector(".notebook");
+function projectDescription(self){
+    notebook.innerHTML = descriptions[( (4+j-1)%4)*3 + self - 1] 
+}
+
+var descriptions = [
+    '<h2> LOREM IPSUM 1</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 2</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 3</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 4</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 5</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 6</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 7</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 8</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 9</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 10</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 11</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+    '<h2> LOREM IPSUM 12</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, quam non condimentum feugiat, massa arcu lobortis erat, eu mollis mi sapien non sem. Aliquam erat volutpat. Phasellus ac tempus ex. Duis vestibulum pharetra tortor, et feugiat est viverra a. Morbi nec rhoncus est. Fusce sagittis metus sit amet ultrices ultricies. Sed fringilla id enim id efficitur. Sed faucibus odio nisl, ac sodales dui pulvinar sed. Integer bibendum tincidunt magna nec dignissim. Quisque consequat arcu tellus, eu tempus sem semper ac. Morbi at vestibulum massa.</p>',
+]
